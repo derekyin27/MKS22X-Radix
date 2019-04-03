@@ -50,5 +50,25 @@ public class MyLinkedList<E>{
     return str;
   }
 
+  public MyLinkedList(){
+    size=0;
+  }
+  public void clear(){
+    size=0;
+  }
+  public void add(E element){
+    Node<E> toAdd = new Node<E>(element);
+    if (size==0){
+      start = toAdd;
+      end = toAdd;
+    }
+    else{
+      end.setNext(toAdd);
+      toAdd.setPrev(end);
+      end = toAdd;
+    }
+    size++;
+  }
+
 
 }
