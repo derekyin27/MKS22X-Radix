@@ -80,6 +80,15 @@ public class MyLinkedList<E>{
     size+=other.size();
     other.clear();
   }
+  public E removeFront(){
+    Node<E> toRem = start;
+    if (size>1){
+      start= start.next();
+      start.setPrev(null);
+    }
+    size--;
+    return toRem.getData();
+  }
   public static void main(String args[]){
     MyLinkedList<Integer> l1 = new MyLinkedList<>();
     MyLinkedList<Integer> l2 = new MyLinkedList<>();
