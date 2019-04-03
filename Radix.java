@@ -3,7 +3,7 @@ public class Radix{
   @SuppressWarnings("unchecked")
   public static void radixsort(int[] data){
     MyLinkedList<Integer>[] bucket = new MyLinkedList[20];//extend to include negatives
-    MyLinkedList<Integer>[] temp = new MyLinkedList<>();
+    MyLinkedList<Integer> temp = new MyLinkedList<>();
     for (int i =0; i < bucket.length; i++){
       bucket[i] = new MyLinkedList<Integer>();
     }
@@ -17,8 +17,14 @@ public class Radix{
     for (int in = 1; max/in > 0; in*=10){
       for (int i =0; i < data.length; i++){
         int x = temp.removeFront();
-        bucket[9+n/place%10].add(x);
+        bucket[9+x/in%10].add(x);
       }
+      for (int i =0; i < bucket.length; i++){
+        if (bucket[i].size()>0) temp.extend(bucket[i]);
+      }
+    }
+    for (int i = 0; i < data.length; i++){
+      data[i] = temp.removeFront();
     }
   }
 }
