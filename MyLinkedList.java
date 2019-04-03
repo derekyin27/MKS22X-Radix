@@ -11,6 +11,7 @@ public class MyLinkedList<E>{
   public Node (E data1){
     data = data1;
   }
+
   public Node<E> next(){
     return next;
   }
@@ -56,6 +57,9 @@ public class MyLinkedList<E>{
   public void clear(){
     size=0;
   }
+  public int size(){
+    return size;
+  }
   public void add(E element){
     Node<E> toAdd = new Node<E>(element);
     if (size==0){
@@ -76,6 +80,19 @@ public class MyLinkedList<E>{
     size+=other.size();
     other.clear();
   }
-
+  public static void main(String args[]){
+    MyLinkedList<Integer> l1 = new MyLinkedList<>();
+    MyLinkedList<Integer> l2 = new MyLinkedList<>();
+    System.out.println(l1);
+    System.out.println(l2);
+    for(int i = 0; i < 20; i++){
+      l1.add(i);
+      l2.add(i+2);
+    }
+    System.out.println(l1);
+    System.out.println(l2);
+    l1.extend(l2);
+    System.out.println(l1);
+}
 
 }
